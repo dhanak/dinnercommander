@@ -1,0 +1,102 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+* {
+    font-size: 14pt;
+}
+h1 {
+    font-size: 16pt;
+    margin: 1ex auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+#help {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 16pt;
+    text-decoration: none;
+    color: black;
+    top: 10px;
+    left: 10px;
+}
+#cog {
+    position: absolute;
+    cursor: pointer;
+    width: 24px;
+    top: 10px;
+    right: 10px;
+}
+#labels {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+#labels label {
+    margin: 10px auto;
+}
+#labels input {
+    display: none;
+}
+#labels input ~ span {
+    padding: 5px 10px;
+}
+#labels input:checked ~ span {
+    border: 1px solid indigo;
+    border-radius: 5px;
+    padding: 4px 9px;
+    background: lavender;
+}
+#buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-content: center;
+    justify-content: center;
+}
+#buttons button {
+    width: 90%;
+    height: 3.5em;
+    margin: 10px auto;
+}
+#config {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid gray;
+    box-shadow: 0 0 15px 10px gray;
+    padding: 20px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+}
+#config * {
+    font-size: 12pt;
+}
+#config > * {
+    margin: 5px 0;
+}
+#config-lang-select {
+    position: relative;
+}
+#config-lang-select select {
+    position: absolute;
+    width: calc(66%);
+    right: 0;
+    top: -3px;
+}
+#config textarea {
+    flex-grow: 1;
+}
+#config-btn-row button {
+    width: calc(50% - 10px);
+    margin: 0 3px;
+}
