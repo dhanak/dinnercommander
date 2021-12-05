@@ -27,23 +27,31 @@ function populateLanguageSelector(select) {
     var validCodes = new Set(voices.map(voice => primaryLanguage(voice.lang)));
     var preferredCodes = new Set(navigator.languages.map(primaryLanguage));
     var pref = document.createElement('optgroup');
+    var supp = document.createElement('optgroup');
     var rest = document.createElement('optgroup');
 
     pref.label = translate('preferred');
-    rest.label = translate('others');
+    supp.label = translate('supported');
+    rest.label = translate('voice-only');
 
     var preferred = preferredLanguage();
     langCodes.forEach(function (lang) {
         if (validCodes.has(lang.code)) {
             var opt = new Option(lang.nativeName, lang.code);
             opt.selected = lang.code == preferred;
-            (preferredCodes.has(lang.code) ? pref : rest).appendChild(opt);
+            var grp = preferredCodes.has(lang.code) ? pref :
+                lang.code in translations ? supp : rest;
+            grp.appendChild(opt);
         }
     });
 
     select.textContent = '';
-    select.appendChild(pref);
-    select.appendChild(rest);
+    if (pref.children.length)
+        select.appendChild(pref);
+    if (supp.children.length)
+        select.appendChild(supp);
+    if (rest.children.length)
+        select.appendChild(rest);
 }
 
 function translatePage() {
