@@ -1,5 +1,9 @@
+function primaryLanguage(tag) {
+    return tag.split(/[-_]/)[0];
+}
+
 function preferredLanguage() {
-    return fetchData('lang') || navigator.language.split('-')[0];
+    return fetchData('lang') || primaryLanguage(navigator.language);
 }
 
 function translate(text) {
@@ -20,8 +24,8 @@ function populateLanguageSelector(select) {
     if (!select || !voices)
         return;
 
-    var validCodes = new Set(voices.map(voice => voice.lang.split('-')[0]));
-    var preferredCodes = new Set(navigator.languages.map(l => l.split('-')[0]));
+    var validCodes = new Set(voices.map(voice => primaryLanguage(voice.lang)));
+    var preferredCodes = new Set(navigator.languages.map(primaryLanguage));
     var pref = document.createElement('optgroup');
     var rest = document.createElement('optgroup');
 
@@ -49,4 +53,4 @@ function translatePage() {
 
 window.speechSynthesis.addEventListener('voiceschanged', function() {
     populateLanguageSelector(document.getElementById('lang'));
-});
+})

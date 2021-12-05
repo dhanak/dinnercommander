@@ -3,7 +3,8 @@ var children = [
     'Kornél',
     'Vince',
     'Fruzsi'
-];
+]
+
 var commands = [
     '😶 Csukott szájjal egyél!',
     '🥘 Egyél!',
@@ -19,7 +20,7 @@ var commands = [
     '🥤 Tedd le a poharat!',
     '🦶 Tedd le a lábad!',
     '🪑 Ülj le!'
-];
+]
 
 function speak(text) {
     var utter = new SpeechSynthesisUtterance(text);
@@ -97,4 +98,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     translatePage();
     populateButtons();
-});
+})
